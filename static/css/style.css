@@ -1,0 +1,170 @@
+/* style.css */
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #f5a623;
+    --dark-color: #333;
+    --light-color: #f4f4f4;
+    --danger-color: #d0021b;
+    --success-color: #7ed321;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+}
+
+header {
+    background: var(--dark-color);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: var(--primary-color);
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: var(--dark-color);
+    color: #fff;
+}
+
+/* Utilitários */
+.hidden {
+    display: none !important;
+}
+
+/* Cards para Jogos e Empréstimos */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.card p {
+    flex-grow: 1;
+    margin-bottom: 10px;
+}
+
+.card-status {
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.status-disponivel {
+    color: var(--success-color);
+}
+
+.status-emprestado {
+    color: var(--danger-color);
+}
+
+.card .actions {
+    margin-top: auto;
+    display: flex;
+    gap: 10px;
+}
+
+/* Formulários */
+.form-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.btn-primary { background-color: var(--primary-color); }
+.btn-primary:hover { background-color: #3a80d2; }
+
+.btn-secondary { background-color: var(--secondary-color); }
+.btn-secondary:hover { background-color: #e59613; }
+
+.btn-danger { background-color: var(--danger-color); }
+.btn-danger:hover { background-color: #c0020b; }
+
+.btn-success { background-color: var(--success-color); }
+.btn-success:hover { background-color: #6ec311; }
