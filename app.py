@@ -24,7 +24,7 @@ def login():
         #Realiza o login caso o usuário esteja na lista de usuários
         for u in usuarios:
             if u['usuario'] == usuario and u['senha'] == senha:
-                return f"<h2>Bem-vindo, {usuario}!</h2>"
+                return redirect('/home')
 
         return template('login', erro='Usuário ou senha inválidos')
 
@@ -44,9 +44,20 @@ def cadastro():
 
         # Adiciona novo usuário
         usuarios.append({'usuario': novo_usuario, 'senha': nova_senha})
-        return redirect('/')
+        return redirect('/home')
 
     return template('cadastro', erro=None)
+
+# Tela de Home
+@app.route('/home', method=['GET', 'POST'])
+def home():
+    jogos = [
+        {'nome': 'Catan', 'descricao': 'Jogo de estratégia e colonização.', 'imagem': '/static/catan.jpg'},
+        {'nome': 'Ticket to Ride', 'descricao': 'Construção de rotas de trem.', 'imagem': '/static/ticket.jpg'},
+        {'nome': 'Dobble', 'descricao': 'Jogo rápido de reconhecimento visual.', 'imagem': '/static/dobble.jpg'},
+    ]
+    return template('home', jogos=jogos)
+
 
 # Inicia o servidor
 run(app, host='localhost', port=8080, debug=True, reloader=True)
