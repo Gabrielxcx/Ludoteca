@@ -44,4 +44,4 @@ O projeto segue a estrutura MVC para separação de responsabilidades:
 ```bash
 curl -X POST http://localhost:8080/usuarios \
 -H "Content-Type: application/json" \
--d '{"nome": "Alice", "email": "alice@email.com", "senha": "senha123"}'
+-d '{"nome": "Alice",  "senha": "senha123"}'
