@@ -1,4 +1,3 @@
-# controllers/auth_controller.py
 import json
 from functools import wraps
 from bottle import post, request, response, abort
@@ -22,12 +21,7 @@ def save_users(users):
 
 
 def login_required(role="regular"):
-    """
-    Decorator para proteger rotas. Verifica um 'token' simples no cabeçalho
-    e o nível de permissão do usuário.
-    Para este projeto, o token será no formato 'user_id:user_role'.
-    Ex: Authorization: 4e3e3b7d-62f4-4a7b-8b3c-0e7d3e3f3b7d:admin
-    """
+  
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):

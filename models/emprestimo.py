@@ -1,4 +1,4 @@
-# models/emprestimo.py
+
 import uuid
 from datetime import datetime
 
@@ -13,7 +13,7 @@ class Emprestimo:
         self._data_emprestimo = datetime.now()
         self._data_devolucao = None
 
-    # --- Properties para Encapsulamento ---
+    
     @property
     def id(self): return self._id
     @property
@@ -35,7 +35,7 @@ class Emprestimo:
             "id": self._id,
             "id_usuario": self._id_usuario,
             "id_jogo": self._id_jogo,
-            # Converte datetime para string no formato ISO para ser compatível com JSON
+            
             "data_emprestimo": self._data_emprestimo.isoformat() if self._data_emprestimo else None,
             "data_devolucao": self._data_devolucao.isoformat() if self._data_devolucao else None,
         }

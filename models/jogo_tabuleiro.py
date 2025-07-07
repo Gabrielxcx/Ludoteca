@@ -1,4 +1,4 @@
-# models/jogo_tabuleiro.py
+
 import uuid
 
 class JogoTabuleiro:
@@ -14,7 +14,7 @@ class JogoTabuleiro:
         self._max_jogadores = max_jogadores
         self._disponivel = True
 
-    # --- Properties para Encapsulamento ---
+  
     @property
     def id(self): return self._id
     @property

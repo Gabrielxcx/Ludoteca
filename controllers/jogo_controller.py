@@ -1,4 +1,4 @@
-# controllers/jogo_controller.py
+
 import json
 from bottle import get, post, put, delete, request, response, abort
 from models.jogo_tabuleiro import JogoTabuleiro

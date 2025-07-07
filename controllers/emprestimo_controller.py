@@ -1,4 +1,4 @@
-# controllers/emprestimo_controller.py
+
 import json
 from bottle import post, put, get, request, response, abort
 from models.emprestimo import Emprestimo
