@@ -79,27 +79,43 @@ def home():
 
 @app.route('/reserva/<jogo_id>', method=['GET', 'POST'])
 def reserva(jogo_id):
-    # To do - Buscar informacoes do jogo no backend
+    # Função auxiliar para buscar o jogo pela posição
     def buscar_jogo_por_id(lista, id_busca):
         for id, jogo in enumerate(lista):
             if id == int(id_busca):
-                print(id, jogo)
                 return jogo
         return {'nome': 'Jogo não encontrado', 'descricao': '', 'imagem': '', 'valor': 0.0}
+
     jogo = buscar_jogo_por_id(jogos, jogo_id)
-    
+
+    # Inicializa o dicionário de reservas, se ainda não existir
+    if not hasattr(app, 'reservas'):
+        app.reservas = {}
+
     if request.method == 'POST':
         nome = request.forms.get('nome')
         identidade = request.forms.get('identidade')
 
         response.content_type = 'application/json'
-        return json.dumps({
-            'nome_jogo': jogo['nome'],
-            'valor': jogo['valor'],
-            'nome_usuario': nome,
-            'identidade': identidade
-        })
 
-    return template('reserva', jogo=jogo, jogo_id=jogo_id)
-# Inicia o servidor
-run(app, host='localhost', port=8080, debug=True, reloader=True)
+        # Verifica se o jogo já foi reservado
+        if app.reservas.get(jogo_id):
+            return json.dumps({
+                'erro': 'Este jogo já foi reservado por outra pessoa.'
+            })
+        else:
+            # Armazena a reserva
+            app.reservas[jogo_id] = {
+                'nome_jogo': jogo['nome'],
+                'valor': jogo['valor'],
+                'nome_usuario': nome,
+                'identidade': identidade,
+                'reservado': True
+            }
+            return json.dumps(app.reservas[jogo_id])
+
+    # GET: renderiza o template de reserva com informações se já estiver reservado
+    reservado = app.reservas.get(jogo_id) if hasattr(app, 'reservas') else None
+    return template('reserva', jogo=jogo, jogo_id=jogo_id, reservado=reservado)
+if __name__ == '__main__':
+    run(app, host='localhost', port=8080, debug=True, reloader=True)
