@@ -32,7 +32,7 @@ O projeto segue a estrutura MVC para separação de responsabilidades:
     Na raiz do projeto (`/ludoteca-backend`), execute o comando:
 
     ```bash
-    python main.py
+    python app.py
     ```
 
     O servidor estará rodando em `http://localhost:8080`.
